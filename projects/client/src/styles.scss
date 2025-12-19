@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@scion/components';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
+
+html {
+  font-size: 14px; // defines 1rem as 14px
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  font-family: Roboto, sans-serif;
+  color: var(--sci-color-text);
+  background-color: unset; // Do not set background color to inherit it from the embedding context.
+}
+
+// Style HTML button
+button {
+  border: 1px solid var(--sci-color-border);
+  border-radius: var(--sci-corner-small);
+  background-color: var(--sci-color-gray-100);
+  padding: .25em 1em;
+  font-family: inherit;
+  text-align: center;
+  user-select: none;
+
+  &:hover:where(:not(:disabled)) {
+    background-color: #{light-dark}(color-mix(in srgb, var(--sci-color-gray-200) 95%, var(--sci-static-color-white)), color-mix(in srgb, var(--sci-color-gray-100) 75%, var(--sci-static-color-black)));
+  }
+
+  &:active:where(:not(:disabled)) {
+    background-color: #{light-dark}(color-mix(in srgb, var(--sci-color-gray-200) 97%, var(--sci-static-color-black)), color-mix(in srgb, var(--sci-color-gray-100) 85%, var(--sci-static-color-black)));
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// Style HTML Select element (list)
+select[size] {
+  border: none;
+  border-radius: 0;
+  font-family: inherit;
+  user-select: none;
+  outline: none;
+  overflow: auto;
+  background-color: inherit;
+
+  option {
+    padding: .125em .5em;
+  }
+}
