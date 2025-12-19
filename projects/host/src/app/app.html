@@ -1,0 +1,29 @@
+<header>
+  <span>Workbench Demo for ART KaMa</span>
+
+  <!-- Panel Alignment -->
+  <select [(ngModel)]="workbenchService.settings.panelAlignment">
+    <option value="left">Left</option>
+    <option value="right">Right</option>
+    <option value="center">Center</option>
+    <option value="justify">Justify</option>
+  </select>
+
+  <!-- Theme -->
+  <select [(ngModel)]="workbenchService.settings.theme">
+    <option value="scion-light">Light</option>
+    <option value="scion-dark">Dark</option>
+  </select>
+
+  <!-- Reset Perspective -->
+  <button (click)="workbenchService.resetPerspective()">Reset Perspective</button>
+
+  <!-- Switch Perspective -->
+  <select [ngModel]="workbenchService.activePerspective()?.id" (ngModelChange)="workbenchService.switchPerspective($event)">
+    @for (perspective of workbenchService.perspectives(); track perspective.id) {
+      <option [attr.value]="perspective.id">{{perspective.data['label']}}</option>
+    }
+  </select>
+</header>
+
+<wb-workbench/>

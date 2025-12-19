@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  > header {
+    display: flex;
+    flex: none;
+    border-bottom: 1px solid var(--sci-color-border);
+    padding: .5em;
+    gap: .25em;
+    align-items: center;
+    justify-content: space-between;
+
+    > span {
+      flex: auto;
+      font-weight: 500;
+    }
+  }
+
+
+  > wb-workbench {
+    flex: auto;
+  }
+}
