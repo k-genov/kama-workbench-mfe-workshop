@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {WorkbenchDialogService, WorkbenchMessageBoxService, WorkbenchPopupService, WorkbenchView} from '@scion/workbench-client';
+import {WorkbenchDialogService, WorkbenchMessageBoxService, WorkbenchNotificationService, WorkbenchPopupService, WorkbenchView} from '@scion/workbench-client';
 import {toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
@@ -13,6 +13,7 @@ export default class Project {
   private dialogService = inject(WorkbenchDialogService);
   private messageBox = inject(WorkbenchMessageBoxService);
   private popupService = inject(WorkbenchPopupService);
+  private notificationService = inject(WorkbenchNotificationService);
   private params = toSignal(this.view.params$, {initialValue: new Map<string, unknown>()});
 
   constructor() {
@@ -35,6 +36,10 @@ export default class Project {
 
   protected onOpenPopup(event: Event): void {
     void this.popupService.open({component: 'popup'}, {anchor: event.target as HTMLElement});
+  }
+
+  protected onOpenNotification(): void {
+    void this.notificationService.show('%notification.message');
   }
 
 }

@@ -14,4 +14,5 @@ export default class ActivatorModule {
 const translations = new Map<string, string>()
   .set('yes.action', 'Yes')
   .set('no.action', 'No')
-  .set('delete.message', 'Do you want to delete?');
+  .set('delete.message', 'Do you want to delete?')
+  .set('notification.message', 'Houston we have a problem!');

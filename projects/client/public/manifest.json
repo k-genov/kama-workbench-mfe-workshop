@@ -168,6 +168,10 @@
 
     {
       "type": "messagebox"
+    },
+
+    {
+      "type": "notification"
     }
   ]
 }
