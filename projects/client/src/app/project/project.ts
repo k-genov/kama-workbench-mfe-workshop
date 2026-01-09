@@ -1,6 +1,7 @@
-import {Component, inject} from '@angular/core';
+import {Component, effect, inject, untracked} from '@angular/core';
 import {WorkbenchDialogService, WorkbenchMessageBoxService, WorkbenchNotificationService, WorkbenchPopupService, WorkbenchView} from '@scion/workbench-client';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {MessageClient} from '@scion/microfrontend-platform';
 
 @Component({
   selector: 'app-project',
@@ -14,10 +15,31 @@ export default class Project {
   private messageBox = inject(WorkbenchMessageBoxService);
   private popupService = inject(WorkbenchPopupService);
   private notificationService = inject(WorkbenchNotificationService);
+  private messageClient = inject(MessageClient);
+  private focused = toSignal(this.view.focused$);
   private params = toSignal(this.view.params$, {initialValue: new Map<string, unknown>()});
 
   constructor() {
-    this.view.signalReady();
+    this.view.signalReady()
+
+    effect(() => {
+      // track view changes
+      this.focused();
+      const projectId = this.params().get('id') as string;
+
+      untracked(() => {
+        void this.propagateSelection(projectId);
+      });
+    })
+
+    this.view.canClose(() => this.propagateSelection(null).then(() => true))
+
+  }
+
+  private async propagateSelection(projectId: string | null): Promise<void> {
+    if (this.focused()) {
+      return this.messageClient.publish('client-app/project/selection', {projectId}, {retain: true});
+    }
   }
 
   protected onOpenDetails(): void {
