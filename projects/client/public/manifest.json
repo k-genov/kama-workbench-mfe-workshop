@@ -152,6 +152,10 @@
         "component": "devtools",
         "vendor": "scion"
       }
+    },
+
+    {
+      "type": "messagebox"
     }
   ]
 }
