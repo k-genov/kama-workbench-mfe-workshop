@@ -9,6 +9,13 @@ export const workbenchConfig: WorkbenchConfig = {
     },
     applications: [
       {symbolicName: 'client-app', manifestUrl: 'http://localhost:4201/manifest.json'},
+      {
+        symbolicName: 'devtools',
+        manifestUrl: 'https://microfrontend-platform-devtools.scion.vercel.app/manifest.json',
+        intentionCheckDisabled: true,
+        scopeCheckDisabled: true,
+        capabilityActiveCheckDisabled: true,
+      },
     ],
   }
 };
