@@ -6,4 +6,5 @@ export const routes: Routes = [
   {path: 'projects', loadComponent: () => import('./projects/projects')},
   {path: 'project', loadComponent: () => import('./project/project')},
   {path: 'dialog', loadComponent: () => import('./dialog/dialog')},
+  {path: 'popup', loadComponent: () => import('./popup/popup')},
 ];

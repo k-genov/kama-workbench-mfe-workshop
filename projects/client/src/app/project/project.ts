@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {WorkbenchDialogService, WorkbenchMessageBoxService, WorkbenchView} from '@scion/workbench-client';
+import {WorkbenchDialogService, WorkbenchMessageBoxService, WorkbenchPopupService, WorkbenchView} from '@scion/workbench-client';
 import {toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
@@ -12,6 +12,7 @@ export default class Project {
   private view = inject(WorkbenchView);
   private dialogService = inject(WorkbenchDialogService);
   private messageBox = inject(WorkbenchMessageBoxService);
+  private popupService = inject(WorkbenchPopupService);
   private params = toSignal(this.view.params$, {initialValue: new Map<string, unknown>()});
 
   constructor() {
@@ -31,4 +32,9 @@ export default class Project {
       console.log('>>>> deleting data...');
     }
   }
+
+  protected onOpenPopup(event: Event): void {
+    void this.popupService.open({component: 'popup'}, {anchor: event.target as HTMLElement});
+  }
+
 }
