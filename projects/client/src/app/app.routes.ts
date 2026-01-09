@@ -4,4 +4,5 @@ export const routes: Routes = [
   {path: 'desktop', loadComponent: () => import('./desktop/desktop')},
   {path: 'projects', loadComponent: () => import('./projects/projects')},
   {path: 'project', loadComponent: () => import('./project/project')},
+  {path: 'dialog', loadComponent: () => import('./dialog/dialog')},
 ];

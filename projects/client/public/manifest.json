@@ -107,6 +107,28 @@
         "title": "Project :id",
         "showSplash": true
       }
+    },
+
+    {
+      "type": "dialog",
+      "qualifier": {
+        "component": "dialog"
+      },
+      "params": [
+        {
+          "name": "id",
+          "required": true
+        }
+      ],
+      "properties": {
+        "path": "dialog",
+        "size": {
+          "width": "300px",
+          "height": "300px"
+        },
+        "title": "Project :id",
+        "showSplash": true
+      }
     }
   ],
   "intentions": [
