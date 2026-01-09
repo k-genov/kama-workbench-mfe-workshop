@@ -1,6 +1,78 @@
 {
   "name": "Client App",
   "baseUrl": "#",
-  "capabilities": [],
-  "intentions": []
+  "capabilities": [
+    {
+      "type": "part",
+      "qualifier": {
+        "part": "devtools",
+        "perspective": "perspective-1"
+      },
+      "properties": {
+        "views": [
+          {
+            "qualifier": {
+              "component": "devtools",
+              "vendor": "scion"
+            }
+          }
+        ],
+        "extras": {
+          "icon": "code",
+          "label": "Dev"
+        },
+        "showSplash": true
+      }
+    },
+
+    {
+      "type": "part",
+      "qualifier": {
+        "part": "main-area",
+        "perspective": "perspective-1"
+      },
+      "properties": {
+        "showSplash": true
+      }
+    },
+
+    {
+      "type": "perspective",
+      "qualifier": {
+        "perspective": "perspective-1"
+      },
+      "private": false,
+      "properties": {
+        "data": {
+          "label": "Perspective 1"
+        },
+        "parts": [
+          {
+            "id": "main-area",
+            "qualifier": {
+              "part": "main-area",
+              "perspective": "perspective-1"
+            }
+          },
+          {
+            "id": "devtools",
+            "qualifier": {
+              "part": "devtools",
+              "perspective": "perspective-1"
+            },
+            "position": "bottom-left"
+          }
+        ]
+      }
+    }
+  ],
+  "intentions": [
+    {
+      "type": "view",
+      "qualifier": {
+        "component": "devtools",
+        "vendor": "scion"
+      }
+    }
+  ]
 }
