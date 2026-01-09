@@ -3,6 +3,14 @@
   "baseUrl": "#",
   "capabilities": [
     {
+      "type": "activator",
+      "private": false,
+      "properties": {
+        "path": "activator"
+      }
+    },
+
+    {
       "type": "part",
       "qualifier": {
         "part": "devtools",
@@ -104,7 +112,10 @@
       ],
       "properties": {
         "path": "project",
-        "title": "Project :id",
+        "title": ":title",
+        "resolve": {
+          "title": "projects/:id/title"
+        },
         "showSplash": true
       }
     },
@@ -126,7 +137,10 @@
           "width": "300px",
           "height": "300px"
         },
-        "title": "Project :id",
+        "title": ":title",
+        "resolve": {
+          "title": "projects/:id/title"
+        },
         "showSplash": true
       }
     }
