@@ -1,5 +1,8 @@
-import {Component, inject} from '@angular/core';
+import {Component, effect, inject} from '@angular/core';
 import {WorkbenchPart, WorkbenchRouter} from '@scion/workbench-client';
+import {MessageClient} from '@scion/microfrontend-platform';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {map} from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -10,9 +13,16 @@ import {WorkbenchPart, WorkbenchRouter} from '@scion/workbench-client';
 export default class Projects {
 
   private router = inject(WorkbenchRouter);
+  private messageClient = inject(MessageClient);
+  private selection = toSignal(this.messageClient.observe$<{projectId: string | null}>('client-app/project/selection').pipe(map(message => message.body!)));
 
   constructor() {
-    inject(WorkbenchPart).signalReady();
+    inject(WorkbenchPart).signalReady()
+
+    effect(() => {
+      const projectId = this.selection()?.projectId;
+      console.log('>>>> Selected Project', projectId);
+    });
   }
 
   protected onOpenProject(projectId: string): void {
