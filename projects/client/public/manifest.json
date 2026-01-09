@@ -143,6 +143,18 @@
         },
         "showSplash": true
       }
+    },
+
+    {
+      "type": "popup",
+      "qualifier": {
+        "component": "popup"
+      },
+
+      "properties": {
+        "path": "popup",
+        "showSplash": true
+      }
     }
   ],
   "intentions": [
