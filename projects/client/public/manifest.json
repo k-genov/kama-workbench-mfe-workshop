@@ -38,6 +38,22 @@
     },
 
     {
+      "type": "part",
+      "qualifier": {
+        "part": "projects",
+        "perspective": "perspective-1"
+      },
+      "properties": {
+        "extras": {
+          "icon": "folder",
+          "label": "Projects"
+        },
+        "path": "projects",
+        "showSplash": true
+      }
+    },
+
+    {
       "type": "perspective",
       "qualifier": {
         "perspective": "perspective-1"
@@ -62,8 +78,34 @@
               "perspective": "perspective-1"
             },
             "position": "bottom-left"
+          },
+          {
+            "id": "projects",
+            "qualifier": {
+              "part": "projects",
+              "perspective": "perspective-1"
+            },
+            "position": "left-top"
           }
         ]
+      }
+    },
+
+    {
+      "type": "view",
+      "qualifier": {
+        "component": "project"
+      },
+      "params": [
+        {
+          "name": "id",
+          "required": true
+        }
+      ],
+      "properties": {
+        "path": "project",
+        "title": "Project :id",
+        "showSplash": true
       }
     }
   ],
