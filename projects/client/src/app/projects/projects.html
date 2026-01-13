@@ -1,4 +1,4 @@
-<select size="2" (dblclick)="onOpenProject(select.value)" #select>
+<select size="2" (dblclick)="onOpenProject(select.value)" [value]="selection()" #select>
   <option value="1">Project 1</option>
   <option value="2">Project 2</option>
   <option value="3">Project 3</option>

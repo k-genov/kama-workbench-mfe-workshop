@@ -14,15 +14,12 @@ export default class Projects {
 
   private router = inject(WorkbenchRouter);
   private messageClient = inject(MessageClient);
-  private selection = toSignal(this.messageClient.observe$<{projectId: string | null}>('client-app/project/selection').pipe(map(message => message.body!)));
+
+  protected selection = toSignal(this.messageClient.observe$<{projectId: string | null}>('client-app/project/selection')
+    .pipe(map(message => message.body!.projectId)));
 
   constructor() {
-    inject(WorkbenchPart).signalReady()
-
-    effect(() => {
-      const projectId = this.selection()?.projectId;
-      console.log('>>>> Selected Project', projectId);
-    });
+    inject(WorkbenchPart).signalReady();
   }
 
   protected onOpenProject(projectId: string): void {
